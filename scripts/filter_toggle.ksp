@@ -1,0 +1,18 @@
+on init
+    make_perfview
+    set_ui_height_px(70)
+
+    declare ui_button $filter
+    set_text($filter,"LP Filter")
+
+    { Filtro inicialmente aberto }
+    set_engine_par($ENGINE_PAR_CUTOFF, 20000, -1, 0, -1)
+end on
+
+on ui_control($filter)
+    if ($filter = 1)
+        set_engine_par($ENGINE_PAR_CUTOFF, 2000, -1, 0, -1)
+    else
+        set_engine_par($ENGINE_PAR_CUTOFF, 20000, -1, 0, -1)
+    end if
+end on
