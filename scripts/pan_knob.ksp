@@ -2,11 +2,19 @@ on init
     make_perfview
     set_ui_height_px(70)
 
-    declare ui_knob $pan (0, 100, 1)
-    set_text($pan, "Pan")
-    $pan := 50
+    declare ui_knob $pan_group0 (0, 100, 1)
+    set_text($pan_group0, "Pan Group 0")
+    $pan_group0 := 50
+
+    declare ui_knob $pan_group1 (0, 100, 1)
+    set_text($pan_group1 , "Pan Group 1")
+    $pan_group1 := 50
 end on
 
-on ui_control($pan)
-    set_engine_par($ENGINE_PAR_PAN, (($pan * 200) - 10000), -1, -1, -1)
+on ui_control($pan_group0)
+    set_engine_par($ENGINE_PAR_PAN, (($pan_group0 * 200) - 10000), -1, -1, 0)
+end on
+
+on ui_control($pan_group1)
+    set_engine_par($ENGINE_PAR_PAN, (($pan_group1 * 200) - 10000), -1, -1, 1 )
 end on
